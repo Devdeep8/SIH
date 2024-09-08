@@ -1,312 +1,218 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/k8mkzfJfsTM
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
+"use client"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { JSX, SVGProps } from "react"
-
-export default function Component() {
+import { Landmark, Sun, Palette, Utensils, Book } from "lucide-react"
+import { useRouter } from "next/navigation"
+export default function Home() {
+  const router = useRouter()
   return (
-    <div className="flex flex-col min-h-[100dvh]">
-      <header className="bg-primary text-primary-foreground py-4 px-6 flex items-center justify-between">
-        <Link href="#" className="flex items-center gap-2" prefetch={false}>
-          <NotebookIcon className="h-6 w-6" />
-          <span className="text-xl font-bold">Indian Culture</span>
+    <div className="flex flex-col min-h-screen bg-amber-50">
+      <header className="bg-gradient-to-r from-amber-600 to-red-600 text-white py-4 px-6 flex items-center justify-between sticky top-0 z-50">
+        <Link href="/" className="flex items-center gap-2">
+          <Landmark className="h-8 w-8" />
+          <span className="text-2xl font-bold">HeriTech</span>
         </Link>
         <nav className="hidden md:flex gap-6">
-          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+          <Link href="#festivals" className="text-sm font-medium hover:text-amber-200 transition-colors">
             Festivals
           </Link>
-          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+          <Link href="#art" className="text-sm font-medium hover:text-amber-200 transition-colors">
             Art
           </Link>
-          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+          <Link href="#cuisine" className="text-sm font-medium hover:text-amber-200 transition-colors">
             Cuisine
           </Link>
-          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+          <Link href="#history" className="text-sm font-medium hover:text-amber-200 transition-colors">
             History
           </Link>
         </nav>
-        <Button variant="secondary">Explore</Button>
+        <div className="flex items-center gap-4">
+        <Button onClick={() => router.push("/explor")} variant="outline" className="bg-white text-amber-600 hover:bg-amber-100">Explore</Button>
+        <Button onClick={() => router.push("/login")} variant="outline" className="bg-white text-amber-600 hover:bg-amber-100">Login</Button>
+        </div>
       </header>
       <main className="flex-1">
-        <section className="relative h-[60vh] md:h-[80vh]">
-          <img src="/placeholder.svg" alt="Indian Culture"  className="object-cover" />
-          <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-            <div className="text-center text-white space-y-4">
-              <h1 className="text-4xl md:text-6xl font-bold">Discover the Vibrant Culture of India</h1>
-              <p className="text-lg md:text-xl">
-                Explore the rich traditions, art, and history of this diverse nation.
+        <section className="relative h-[80vh]">
+          <img
+            src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            alt="Taj Mahal"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-amber-600/70 to-red-800/70 flex items-center justify-center">
+            <div className="text-center text-white space-y-6 max-w-4xl px-4">
+              <h1 className="text-5xl md:text-7xl font-bold leading-tight">Discover the Vibrant Heritage of India</h1>
+              <p className="text-xl md:text-2xl">
+                Embark on a digital journey through centuries of tradition, art, and cultural marvels
               </p>
+              <Button size="lg" className="bg-white text-amber-600 hover:bg-amber-100">Start Your Journey</Button>
             </div>
           </div>
         </section>
-        <section id="festivals" className="py-12 md:py-24">
-          <div className="container px-4 md:px-6">
-            <div className="space-y-4 md:space-y-8">
+        <section id="festivals" className="py-16 md:py-24 bg-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="space-y-8">
               <div className="text-center">
-                <h2 className="text-3xl md:text-5xl font-bold">Festivals</h2>
-                <p className="text-muted-foreground text-lg md:text-xl">Celebrate the vibrant festivals of India</p>
+                <h2 className="text-4xl md:text-5xl font-bold text-amber-800">Vibrant Festivals</h2>
+                <p className="text-xl text-amber-600 mt-2">Celebrate the colors of Indian culture</p>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <div className="bg-card p-4 rounded-lg shadow-md">
-                  <img
-                    src="/placeholder.svg"
-                    alt="Diwali"
-                    width={400}
-                    height={250}
-                    className="rounded-lg mb-4 object-cover"
-                    style={{ aspectRatio: "400/250", objectFit: "cover" }}
-                  />
-                  <h3 className="text-xl font-bold">Diwali</h3>
-                  <p className="text-muted-foreground">
-                    The Festival of Lights, celebrated with vibrant colors and delicious sweets.
-                  </p>
-                </div>
-                <div className="bg-card p-4 rounded-lg shadow-md">
-                  <img
-                    src="/placeholder.svg"
-                    alt="Holi"
-                    width={400}
-                    height={250}
-                    className="rounded-lg mb-4 object-cover"
-                    style={{ aspectRatio: "400/250", objectFit: "cover" }}
-                  />
-                  <h3 className="text-xl font-bold">Holi</h3>
-                  <p className="text-muted-foreground">
-                    The Festival of Colors, where people come together to play with vibrant powders.
-                  </p>
-                </div>
-                <div className="bg-card p-4 rounded-lg shadow-md">
-                  <img
-                    src="/placeholder.svg"
-                    alt="Pongal"
-                    width={400}
-                    height={250}
-                    className="rounded-lg mb-4 object-cover"
-                    style={{ aspectRatio: "400/250", objectFit: "cover" }}
-                  />
-                  <h3 className="text-xl font-bold">Pongal</h3>
-                  <p className="text-muted-foreground">
-                    A harvest festival celebrated in South India, marked by delicious traditional dishes.
-                  </p>
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                  {
+                    title: "Diwali",
+                    description: "The Festival of Lights, illuminating homes and hearts.",
+                    image: "https://images.unsplash.com/photo-1636226942649-ee15d2a7ce04?q=80&w=2802&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  },
+                  {
+                    title: "Holi",
+                    description: "A vibrant celebration of colors and spring's arrival.",
+                    image: "https://images.unsplash.com/photo-1616884950055-861aeb5eb380?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  },
+                  {
+                    title: "Durga Puja",
+                    description: "A grand celebration of divine feminine power.",
+                    image: "https://images.unsplash.com/photo-1626094305702-3d81bec477a3?q=80&w=2333&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  }
+                ].map((festival, index) => (
+                  <div key={index} className="bg-amber-100 rounded-lg overflow-hidden shadow-lg transition-transform hover:scale-105">
+                    <img src={festival.image} alt={festival.title} className="w-full h-48 object-cover" />
+                    <div className="p-6">
+                      <h3 className="text-2xl font-bold text-amber-800 mb-2">{festival.title}</h3>
+                      <p className="text-amber-700">{festival.description}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
-        <section id="art" className="py-12 md:py-24 bg-muted">
-          <div className="container px-4 md:px-6">
-            <div className="space-y-4 md:space-y-8">
+        <section id="art" className="py-16 md:py-24 bg-amber-50">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="space-y-8">
               <div className="text-center">
-                <h2 className="text-3xl md:text-5xl font-bold">Art</h2>
-                <p className="text-muted-foreground text-lg md:text-xl">
-                  Explore the rich artistic traditions of India
-                </p>
+                <h2 className="text-4xl md:text-5xl font-bold text-amber-800">Artistic Traditions</h2>
+                <p className="text-xl text-amber-600 mt-2">Explore the rich tapestry of Indian art forms</p>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <div className="bg-card p-4 rounded-lg shadow-md">
-                  <img
-                    src="/placeholder.svg"
-                    alt="Rangoli"
-                    width={400}
-                    height={250}
-                    className="rounded-lg mb-4 object-cover"
-                    style={{ aspectRatio: "400/250", objectFit: "cover" }}
-                  />
-                  <h3 className="text-xl font-bold">Rangoli</h3>
-                  <p className="text-muted-foreground">
-                    Intricate and colorful floor designs, often created during festivals.
-                  </p>
-                </div>
-                <div className="bg-card p-4 rounded-lg shadow-md">
-                  <img
-                    src="/placeholder.svg"
-                    alt="Miniature Painting"
-                    width={400}
-                    height={250}
-                    className="rounded-lg mb-4 object-cover"
-                    style={{ aspectRatio: "400/250", objectFit: "cover" }}
-                  />
-                  <h3 className="text-xl font-bold">Miniature Painting</h3>
-                  <p className="text-muted-foreground">
-                    Delicate and intricate paintings, often depicting scenes from Indian history and mythology.
-                  </p>
-                </div>
-                <div className="bg-card p-4 rounded-lg shadow-md">
-                  <img
-                    src="/placeholder.svg"
-                    alt="Kathakali"
-                    width={400}
-                    height={250}
-                    className="rounded-lg mb-4 object-cover"
-                    style={{ aspectRatio: "400/250", objectFit: "cover" }}
-                  />
-                  <h3 className="text-xl font-bold">Kathakali</h3>
-                  <p className="text-muted-foreground">
-                    A traditional form of dance-drama from the state of Kerala, known for its elaborate costumes and
-                    makeup.
-                  </p>
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                  {
+                    title: "Madhubani",
+                    description: "Intricate folk art from Bihar, depicting nature and mythology.",
+                    image: "https://images.unsplash.com/photo-1629561918009-339e516be72f?q=80&w=2741&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  },
+                  {
+                    title: "Bharatanatyam",
+                    description: "A classical dance form originating from Tamil Nadu.",
+                    image: "https://images.unsplash.com/photo-1722440044211-e5ec891a2822?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  },
+                  {
+                    title: "Meenakari",
+                    description: "The art of enameling, adorning jewelry and decorative items.",
+                    image: "https://plus.unsplash.com/premium_photo-1664117187580-c48528437e04?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  }
+                ].map((art, index) => (
+                  <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:scale-105">
+                    <img src={art.image} alt={art.title} className="w-full h-48 object-cover" />
+                    <div className="p-6">
+                      <h3 className="text-2xl font-bold text-amber-800 mb-2">{art.title}</h3>
+                      <p className="text-amber-700">{art.description}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
-        <section id="cuisine" className="py-12 md:py-24">
-          <div className="container px-4 md:px-6">
-            <div className="space-y-4 md:space-y-8">
+        <section id="cuisine" className="py-16 md:py-24 bg-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="space-y-8">
               <div className="text-center">
-                <h2 className="text-3xl md:text-5xl font-bold">Cuisine</h2>
-                <p className="text-muted-foreground text-lg md:text-xl">
-                  Savor the diverse and flavorful dishes of India
-                </p>
+                <h2 className="text-4xl md:text-5xl font-bold text-amber-800">Culinary Delights</h2>
+                <p className="text-xl text-amber-600 mt-2">Savor the flavors of India's diverse cuisine</p>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <div className="bg-card p-4 rounded-lg shadow-md">
-                  <img
-                    src="/placeholder.svg"
-                    alt="Biryani"
-                    width={400}
-                    height={250}
-                    className="rounded-lg mb-4 object-cover"
-                    style={{ aspectRatio: "400/250", objectFit: "cover" }}
-                  />
-                  <h3 className="text-xl font-bold">Biryani</h3>
-                  <p className="text-muted-foreground">
-                    A fragrant and flavorful rice dish, often made with meat, vegetables, or seafood.
-                  </p>
-                </div>
-                <div className="bg-card p-4 rounded-lg shadow-md">
-                  <img
-                    src="/placeholder.svg"
-                    alt="Dosa"
-                    width={400}
-                    height={250}
-                    className="rounded-lg mb-4 object-cover"
-                    style={{ aspectRatio: "400/250", objectFit: "cover" }}
-                  />
-                  <h3 className="text-xl font-bold">Dosa</h3>
-                  <p className="text-muted-foreground">
-                    A thin, crispy crepe-like dish, often served with a variety of chutneys and sambar.
-                  </p>
-                </div>
-                <div className="bg-card p-4 rounded-lg shadow-md">
-                  <img
-                    src="/placeholder.svg"
-                    alt="Thali"
-                    width={400}
-                    height={250}
-                    className="rounded-lg mb-4 object-cover"
-                    style={{ aspectRatio: "400/250", objectFit: "cover" }}
-                  />
-                  <h3 className="text-xl font-bold">Thali</h3>
-                  <p className="text-muted-foreground">
-                    A platter featuring a variety of dishes, offering a comprehensive sampling of Indian cuisine.
-                  </p>
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                  {
+                    title: "Butter Chicken",
+                    description: "A creamy, tomato-based curry with tender chicken pieces.",
+                    image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                  },
+                  {
+                    title: "Masala Dosa",
+                    description: "A crispy crepe filled with spiced potatoes, served with chutneys.",
+                    image: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                  },
+                  {
+                    title: "Biryani",
+                    description: "Fragrant rice dish with meat or vegetables, aromatic spices.",
+                    image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                  }
+                ].map((dish, index) => (
+                  <div key={index} className="bg-amber-100 rounded-lg overflow-hidden shadow-lg transition-transform hover:scale-105">
+                    <img src={dish.image} alt={dish.title} className="w-full h-48 object-cover" />
+                    <div className="p-6">
+                      <h3 className="text-2xl font-bold text-amber-800 mb-2">{dish.title}</h3>
+                      <p className="text-amber-700">{dish.description}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
-        <section id="history" className="py-12 md:py-24 bg-muted">
-          <div className="container px-4 md:px-6">
-            <div className="space-y-4 md:space-y-8">
+        <section id="history" className="py-16 md:py-24 bg-amber-50">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="space-y-8">
               <div className="text-center">
-                <h2 className="text-3xl md:text-5xl font-bold">History</h2>
-                <p className="text-muted-foreground text-lg md:text-xl">
-                  Discover the rich and diverse history of India
-                </p>
+                <h2 className="text-4xl md:text-5xl font-bold text-amber-800">Rich History</h2>
+                <p className="text-xl text-amber-600 mt-2">Journey through the annals of Indian civilization</p>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <div className="bg-card p-4 rounded-lg shadow-md">
-                  <img
-                    src="/placeholder.svg"
-                    alt="Taj Mahal"
-                    width={400}
-                    height={250}
-                    className="rounded-lg mb-4 object-cover"
-                    style={{ aspectRatio: "400/250", objectFit: "cover" }}
-                  />
-                  <h3 className="text-xl font-bold">Taj Mahal</h3>
-                  <p className="text-muted-foreground">
-                    A magnificent mausoleum, built in the 17th century as a symbol of love and architectural marvel.
-                  </p>
-                </div>
-                <div className="bg-card p-4 rounded-lg shadow-md">
-                  <img
-                    src="/placeholder.svg"
-                    alt="Red Fort"
-                    width={400}
-                    height={250}
-                    className="rounded-lg mb-4 object-cover"
-                    style={{ aspectRatio: "400/250", objectFit: "cover" }}
-                  />
-                  <h3 className="text-xl font-bold">Red Fort</h3>
-                  <p className="text-muted-foreground">
-                    A historic fort in Delhi, built in the 17th century and serving as the seat of the Mughal Empire.
-                  </p>
-                </div>
-                <div className="bg-card p-4 rounded-lg shadow-md">
-                  <img
-                    src="/placeholder.svg"
-                    alt="Khajuraho Temples"
-                    width={400}
-                    height={250}
-                    className="rounded-lg mb-4 object-cover"
-                    style={{ aspectRatio: "400/250", objectFit: "cover" }}
-                  />
-                  <h3 className="text-xl font-bold">Khajuraho Temples</h3>
-                  <p className="text-muted-foreground">
-                    A group of Hindu and Jain temples, known for their intricate and erotic carvings.
-                  </p>
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                  {
+                    title: "Indus Valley Civilization",
+                    description: "One of the world's oldest urban civilizations, known for advanced city planning.",
+                    image: "https://images.unsplash.com/photo-1707928930919-2b479a4999cb?q=80&w=2724&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  },
+                  {
+                    title: "Maurya Empire",
+                    description: "Ancient India's largest empire, known for Emperor Ashoka's reign.",
+                    image: "https://images.unsplash.com/photo-1532664189809-02133fee698d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                  },
+                  {
+                    title: "Mughal Era",
+                    description: "Period of great cultural synthesis, art, and architectural marvels.",
+                    image: "https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                  }
+                ].map((era, index) => (
+                  <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:scale-105">
+                    <img src={era.image} alt={era.title} className="w-full h-48 object-cover" />
+                    <div className="p-6">
+                      <h3 className="text-2xl font-bold text-amber-800 mb-2">{era.title}</h3>
+                      <p className="text-amber-700">{era.description}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
       </main>
-      <footer className="bg-primary text-primary-foreground py-6 px-4 md:px-6">
-        <div className="container flex flex-col md:flex-row items-center justify-between">
-          <p className="text-sm">&copy; 2024 Indian Culture. All rights reserved.</p>
-          <div className="flex gap-4">
-            <Link href="#" className="text-sm hover:underline underline-offset-4" prefetch={false}>
-              Privacy
-            </Link>
-            <Link href="#" className="text-sm hover:underline underline-offset-4" prefetch={false}>
-              Terms
-            </Link>
-            <Link href="#" className="text-sm hover:underline underline-offset-4" prefetch={false}>
-              Contact
-            </Link>
+      <footer className="bg-gradient-to-r from-amber-600 to-red-600 text-white py-8 px-4 md:px-6">
+        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
+          <div className="flex items-center gap-2 mb-4 md:mb-0">
+            <Landmark className="h-8 w-8" />
+            <span className="text-2xl font-bold">HeriTech</span>
           </div>
+          <nav className="flex gap-6">
+            <Link href="#" className="text-sm hover:text-amber-200 transition-colors">Privacy Policy</Link>
+            <Link href="#" className="text-sm hover:text-amber-200 transition-colors">Terms of Service</Link>
+            <Link href="#" className="text-sm hover:text-amber-200 transition-colors">Contact Us</Link>
+          </nav>
+        </div>
+        <div className="container mx-auto mt-4 text-center text-sm">
+          <p>&copy; 2024 HeriTech. All rights reserved. Celebrating Indian Heritage and Culture.</p>
         </div>
       </footer>
     </div>
-  )
-}
-
-function NotebookIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M2 6h4" />
-      <path d="M2 10h4" />
-      <path d="M2 14h4" />
-      <path d="M2 18h4" />
-      <rect width="16" height="20" x="4" y="2" rx="2" />
-      <path d="M16 2v20" />
-    </svg>
   )
 }

@@ -282,11 +282,6 @@ export default function CulturalExplorer() {
           const weatherInfo = await fetchWeather(latitude, longitude);
           setWeather(weatherInfo);
 
-          const localRecommendations = await fetchRecommendations(
-            locationInfo.city
-          );
-          setRecommendations(localRecommendations);
-
           const localShops = await fetchLocalShops(latitude, longitude);
           setLocalShops(localShops);
         },
@@ -295,6 +290,34 @@ export default function CulturalExplorer() {
       );
     }
   }, []);
+
+  // Combine recommendations from events, historical places, and shops
+  const combinedRecommendations = [
+    ...events.slice(0, 2).map((event) => ({
+      id: event.id,
+      name: event.name,
+      type: "Event",
+      description: event.description,
+    })),
+    ...historicalPlaces.slice(0, 2).map((place) => ({
+      id: place.id,
+      name: place.name,
+      type: "Historical Site",
+      description: place.description,
+    })),
+    ...localShops.slice(0, 2).map((shop) => ({
+      id: shop.id,
+      name: shop.name,
+      type: "Shop",
+      description: shop.type,
+    })),
+  ];
+
+ 
+  
+  
+
+  
   const imageUrls = [
     "/Annapurna-Temple.jpg",
     "/Rajwada-Palace.jpeg",
@@ -311,7 +334,7 @@ export default function CulturalExplorer() {
       >
         <div className="container mx-auto px-4 py-6 flex items-center justify-between">
           <h1 className="text-4xl font-bold text-amber-900 flex items-center">
-            HariTech
+            {process.env.APP_NAME || "HeriTech"}
           </h1>
           <h2 className="text-2xl font-semibold text-amber-800">
             {location
@@ -524,23 +547,19 @@ export default function CulturalExplorer() {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2">
-                  {recommendations.map((rec) => (
+                  {combinedRecommendations.map((rec) => (
                     <li
                       key={rec.id}
                       className="flex items-center text-amber-700"
                     >
+                      {rec.type === "Event" && (
+                        <Calendar className="mr-2" />
+                      )}
                       {rec.type === "Historical Site" && (
                         <Landmark className="mr-2" />
                       )}
-                      {rec.type === "Cultural Experience" && (
-                        <Coffee className="mr-2" />
-                      )}
-                      {rec.type === "Educational" && <Book className="mr-2" />}
-                      {rec.type === "Cultural Exploration" && (
-                        <Globe className="mr-2" />
-                      )}
-                      {rec.type === "Guided Experience" && (
-                        <MapPin className="mr-2" />
+                      {rec.type === "Shop" && (
+                        <ShoppingBag className="mr-2" />
                       )}
                       <span>
                         {rec.name} -{" "}
