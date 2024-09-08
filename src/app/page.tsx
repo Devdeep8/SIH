@@ -127,7 +127,7 @@ export default function Home() {
             <div className="space-y-8">
               <div className="text-center">
                 <h2 className="text-4xl md:text-5xl font-bold text-amber-800">Culinary Delights</h2>
-                <p className="text-xl text-amber-600 mt-2">Savor the flavors of India's diverse cuisine</p>
+                <p className="text-xl text-amber-600 mt-2">Savor the flavors of India&apos;s diverse cuisine</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[

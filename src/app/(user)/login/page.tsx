@@ -167,7 +167,7 @@ export default function Login() {
           </Card>
           <div className="text-center text-sm text-white">
             <p>
-              Don't have an account?{" "}
+              Don&apos; t have an account?{" "}
               <Link href="#" className="text-amber-200 hover:text-amber-100 underline underline-offset-4" prefetch={false}>
                 Register
               </Link>
